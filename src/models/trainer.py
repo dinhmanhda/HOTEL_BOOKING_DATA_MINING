@@ -4,12 +4,12 @@ from sklearn.metrics import classification_report, accuracy_score
 import pandas as pd
 
 def train_hotel_model(df):
-    # 1. Chọn các đặc trưng (X) và mục tiêu (y)
-    # Loại bỏ cột 'is_canceled' ra khỏi X vì nó là kết quả cần dự đoán
+    # 1. Chọn đặc trưng (X) và mục tiêu (y)
+    # Loại bỏ 'is_canceled' vì đó là cái cần dự đoán
     X = pd.get_dummies(df.drop(columns=['is_canceled']))
     y = df['is_canceled']
 
-    # 2. Chia tập dữ liệu: 80% để học (train), 20% để kiểm tra (test)
+    # 2. Chia tập dữ liệu: 80% để học, 20% để kiểm tra
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # 3. Khởi tạo và huấn luyện mô hình
@@ -18,8 +18,8 @@ def train_hotel_model(df):
 
     # 4. Dự đoán và đánh giá
     y_pred = model.predict(X_test)
-    print(f"Độ chính xác của mô hình: {accuracy_score(y_test, y_pred):.2f}")
-    print("\nBáo cáo chi tiết:")
+    print(f"Độ chính xác (Accuracy): {accuracy_score(y_test, y_pred):.2f}")
+    print("\nBáo cáo chi tiết (Classification Report):")
     print(classification_report(y_test, y_pred))
     
     return model
