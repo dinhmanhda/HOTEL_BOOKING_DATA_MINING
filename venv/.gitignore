@@ -1,0 +1,7 @@
+# Chặn các file mô hình nặng
+outputs/models/*.pkl
+
+# Chặn dữ liệu tạm và thư mục ảo
+venv/
+__pycache__/
+.DS_Store
