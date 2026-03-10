@@ -1,5 +1,4 @@
-# Bỏ qua mô hình nặng và cache
-outputs/models/hotel_cancel_model.pkl
+outputs/models/*.pkl
 .ipynb_checkpoints/
 __pycache__/
 venv/
